@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx15kq3uy0xhx"]
+
+[ext_resource type="Texture2D" uid="uid://b2js3lfjfg8ac" path="res://Assets/player/1P.png" id="1_dbtyt"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_nq6vi"]
+[ext_resource type="Script" path="res://Scripts/TestScript.gd" id="2_upnwb"]
+[ext_resource type="Texture2D" uid="uid://cxyc65jm6te5r" path="res://Assets/player/2P.png" id="3_k8k1d"]
+[ext_resource type="Texture2D" uid="uid://cvqlppkvr8dr0" path="res://Assets/player/3P.png" id="4_0d1de"]
+
+[node name="Main Game" type="Node2D"]
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2(300, 270)
+script = ExtResource("1_nq6vi")
+textures = Array[Texture]([ExtResource("1_dbtyt"), ExtResource("3_k8k1d"), ExtResource("4_0d1de")])
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(10, 10)
+texture = ExtResource("1_dbtyt")
+script = ExtResource("2_upnwb")
+
+[node name="PreviousStateButton" type="Button" parent="."]
+offset_left = 14.0
+offset_top = 211.0
+offset_right = 142.0
+offset_bottom = 318.0
+theme_override_font_sizes/font_size = 72
+text = "<"
+
+[node name="NextStateButton" type="Button" parent="."]
+offset_left = 1055.0
+offset_top = 211.0
+offset_right = 1183.0
+offset_bottom = 318.0
+theme_override_font_sizes/font_size = 72
+text = ">"
