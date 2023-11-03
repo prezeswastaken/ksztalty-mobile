@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://dubqsemqty23x"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_frd8x"]
+[ext_resource type="Texture2D" uid="uid://b2js3lfjfg8ac" path="res://Assets/player/1P.png" id="2_nvffr"]
+[ext_resource type="Texture2D" uid="uid://cxyc65jm6te5r" path="res://Assets/player/2P.png" id="3_e18u3"]
+[ext_resource type="Texture2D" uid="uid://cvqlppkvr8dr0" path="res://Assets/player/3P.png" id="4_vkvga"]
+
+[node name="Player" type="Node2D"]
+position = Vector2(300, 270)
+script = ExtResource("1_frd8x")
+textures = Array[Texture]([ExtResource("2_nvffr"), ExtResource("3_e18u3"), ExtResource("4_vkvga")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(10, 10)
+texture = ExtResource("2_nvffr")

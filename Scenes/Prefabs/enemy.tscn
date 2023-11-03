@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf2hgxqv7h1h3"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_hlxd6"]
+[ext_resource type="Texture2D" uid="uid://rakjuapw3irg" path="res://Assets/enemy/1E.png" id="2_ntxso"]
+[ext_resource type="Texture2D" uid="uid://baficayn0ksbq" path="res://Assets/enemy/2E.png" id="3_sykup"]
+[ext_resource type="Texture2D" uid="uid://m4h8wlx6ld83" path="res://Assets/enemy/3E.png" id="4_4g5do"]
+
+[node name="Enemy" type="Node2D"]
+scale = Vector2(10, 10)
+script = ExtResource("1_hlxd6")
+textures = Array[Texture]([ExtResource("2_ntxso"), ExtResource("3_sykup"), ExtResource("4_4g5do")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ntxso")

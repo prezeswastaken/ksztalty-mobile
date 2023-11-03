@@ -1,22 +1,43 @@
-[gd_scene load_steps=6 format=3 uid="uid://bx15kq3uy0xhx"]
+[gd_scene load_steps=33 format=3 uid="uid://bx15kq3uy0xhx"]
 
-[ext_resource type="Texture2D" uid="uid://b2js3lfjfg8ac" path="res://Assets/player/1P.png" id="1_dbtyt"]
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_nq6vi"]
-[ext_resource type="Script" path="res://Scripts/TestScript.gd" id="2_upnwb"]
-[ext_resource type="Texture2D" uid="uid://cxyc65jm6te5r" path="res://Assets/player/2P.png" id="3_k8k1d"]
-[ext_resource type="Texture2D" uid="uid://cvqlppkvr8dr0" path="res://Assets/player/3P.png" id="4_0d1de"]
+[ext_resource type="PackedScene" uid="uid://dubqsemqty23x" path="res://Scenes/Prefabs/player.tscn" id="1_aguee"]
+[ext_resource type="PackedScene" uid="uid://bf2hgxqv7h1h3" path="res://Scenes/Prefabs/enemy.tscn" id="2_2m5q1"]
+[ext_resource type="Script" path="res://Scripts/EnemySpawner.gd" id="3_u35f8"]
+[ext_resource type="Texture2D" uid="uid://7vl18fbjlla" path="res://Assets/background/background_1.png" id="4_1wsgo"]
+[ext_resource type="Script" path="res://Scripts/Background.gd" id="4_hjcu0"]
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="5_kjhhn"]
+[ext_resource type="Texture2D" uid="uid://oc0hud7srisa" path="res://Assets/background/background_2.png" id="6_7lu5r"]
+[ext_resource type="Texture2D" uid="uid://c0eydmh1nx7x7" path="res://Assets/background/background_3.png" id="7_3ads8"]
+[ext_resource type="Texture2D" uid="uid://did24kc5wmenq" path="res://Assets/background/background_4.png" id="8_oieg6"]
+[ext_resource type="Texture2D" uid="uid://crisa4a3juoq2" path="res://Assets/background/background_5.png" id="9_n1oeb"]
+[ext_resource type="Texture2D" uid="uid://jrskoiujusar" path="res://Assets/background/background_6.png" id="10_bmqk0"]
+[ext_resource type="Texture2D" uid="uid://bsoerh31w4hlx" path="res://Assets/background/background_7.png" id="11_4r8tm"]
+[ext_resource type="Texture2D" uid="uid://du7go57esdean" path="res://Assets/background/background_8.png" id="12_acpk3"]
+[ext_resource type="Texture2D" uid="uid://bdua0bptpp4t" path="res://Assets/background/background_9.png" id="13_eoupa"]
+[ext_resource type="Texture2D" uid="uid://dqnso73hjv6f5" path="res://Assets/background/background_10.png" id="14_kp28y"]
+[ext_resource type="Texture2D" uid="uid://gdgp7rwpnyu3" path="res://Assets/background/background_11.png" id="15_wpw1p"]
+[ext_resource type="Texture2D" uid="uid://d0tlpm77q78gb" path="res://Assets/background/background_12.png" id="16_7phc7"]
+[ext_resource type="Texture2D" uid="uid://d084ownwo0x3k" path="res://Assets/background/background_13.png" id="17_cerxy"]
+[ext_resource type="Texture2D" uid="uid://byq2r6bf6am5w" path="res://Assets/background/background_14.png" id="18_3v0al"]
+[ext_resource type="Texture2D" uid="uid://c7vqu65sxt3um" path="res://Assets/background/background_15.png" id="19_tjci8"]
+[ext_resource type="Texture2D" uid="uid://de4f0pb7gaa5" path="res://Assets/background/background_16.png" id="20_jcra6"]
+[ext_resource type="Texture2D" uid="uid://dvlfc4pixli21" path="res://Assets/background/background_17.png" id="21_opdtb"]
+[ext_resource type="FontFile" uid="uid://bgcjavx3qamw6" path="res://Minecraftia-Regular.ttf" id="23_52mgr"]
+[ext_resource type="Script" path="res://Scripts/AudioManager.gd" id="24_xvjia"]
+[ext_resource type="AudioStream" uid="uid://bf5hgf0amxcfb" path="res://Assets/sounds/walk_1.wav" id="25_re5cj"]
+[ext_resource type="AudioStream" uid="uid://c2tp1uhpk6rpj" path="res://Assets/sounds/walk_2.wav" id="26_ej6hb"]
+[ext_resource type="AudioStream" uid="uid://byca6mqkjr884" path="res://Assets/sounds/walk_3.wav" id="27_vd6bu"]
+[ext_resource type="AudioStream" uid="uid://dq36qrp6vjh5x" path="res://Assets/sounds/walk_4.wav" id="28_640mj"]
+[ext_resource type="AudioStream" uid="uid://rh2iv88wkohn" path="res://Assets/sounds/death_1.wav" id="29_tt4bs"]
+[ext_resource type="AudioStream" uid="uid://cgfubqswu3xef" path="res://Assets/sounds/death_2.wav" id="30_ctg0g"]
+[ext_resource type="AudioStream" uid="uid://dwx2asddbth4p" path="res://Assets/sounds/death_3.wav" id="31_1rh07"]
+[ext_resource type="AudioStream" uid="uid://b8p2gpqy433en" path="res://Assets/sounds/main_theme.wav" id="32_y3dqc"]
 
-[node name="Main Game" type="Node2D"]
+[node name="MainGame" type="Node2D"]
 
-[node name="Player" type="Node2D" parent="."]
-position = Vector2(300, 270)
-script = ExtResource("1_nq6vi")
-textures = Array[Texture]([ExtResource("1_dbtyt"), ExtResource("3_k8k1d"), ExtResource("4_0d1de")])
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-scale = Vector2(10, 10)
-texture = ExtResource("1_dbtyt")
-script = ExtResource("2_upnwb")
+[node name="Player" parent="." node_paths=PackedStringArray("previous_state_button", "next_state_button") instance=ExtResource("1_aguee")]
+previous_state_button = NodePath("../PreviousStateButton")
+next_state_button = NodePath("../NextStateButton")
 
 [node name="PreviousStateButton" type="Button" parent="."]
 offset_left = 14.0
@@ -33,3 +54,119 @@ offset_right = 1183.0
 offset_bottom = 318.0
 theme_override_font_sizes/font_size = 72
 text = ">"
+
+[node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("timer", "player", "game_manager", "audio_manager")]
+position = Vector2(900, 270)
+script = ExtResource("3_u35f8")
+timer = NodePath("Timer")
+enemy_scene = ExtResource("2_2m5q1")
+player = NodePath("../Player")
+game_manager = NodePath("../GameManager")
+audio_manager = NodePath("../AudioManager")
+time_btw_spawn = 2.0
+
+[node name="Timer" type="Timer" parent="EnemySpawner"]
+wait_time = 2.0
+
+[node name="Background" type="Node2D" parent="."]
+scale = Vector2(4.5, 4.5)
+script = ExtResource("4_hjcu0")
+background_textures = Array[Texture]([ExtResource("4_1wsgo"), ExtResource("6_7lu5r"), ExtResource("7_3ads8"), ExtResource("8_oieg6"), ExtResource("9_n1oeb"), ExtResource("10_bmqk0"), ExtResource("11_4r8tm"), ExtResource("12_acpk3"), ExtResource("13_eoupa"), ExtResource("14_kp28y"), ExtResource("15_wpw1p"), ExtResource("16_7phc7"), ExtResource("17_cerxy"), ExtResource("18_3v0al"), ExtResource("19_tjci8"), ExtResource("20_jcra6"), ExtResource("21_opdtb")])
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+z_index = -1
+position = Vector2(133.556, 60.4444)
+texture = ExtResource("4_1wsgo")
+
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("enemy_spawner", "background", "score_text_label", "game_over_screen")]
+process_mode = 3
+script = ExtResource("5_kjhhn")
+enemy_spawner = NodePath("../EnemySpawner")
+background = NodePath("../Background")
+score_text_label = NodePath("../Control/RichTextLabel")
+game_over_screen = NodePath("../Control/GameOverPanel")
+
+[node name="Control" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 13.0
+offset_right = 828.0
+offset_bottom = 235.0
+theme_override_fonts/normal_font = ExtResource("23_52mgr")
+theme_override_font_sizes/normal_font_size = 30
+text = "SCORE: 0"
+
+[node name="GameOverPanel" type="Panel" parent="Control"]
+visible = false
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = -85.0
+offset_top = -34.0
+offset_right = 1302.0
+offset_bottom = 598.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/GameOverPanel"]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 130.0
+offset_right = 1191.0
+offset_bottom = 330.0
+theme_override_fonts/normal_font = ExtResource("23_52mgr")
+theme_override_font_sizes/normal_font_size = 150
+text = "GAME OVER!"
+
+[node name="Button" type="Button" parent="Control/GameOverPanel"]
+layout_mode = 0
+offset_left = 445.0
+offset_top = 384.0
+offset_right = 930.0
+offset_bottom = 527.0
+theme_override_fonts/font = ExtResource("23_52mgr")
+theme_override_font_sizes/font_size = 50
+text = "PLAY AGAIN"
+
+[node name="AudioManager" type="Node" parent="." node_paths=PackedStringArray("enemy_death_sounds", "player_death_sounds", "music")]
+process_mode = 3
+script = ExtResource("24_xvjia")
+enemy_death_sounds = [NodePath("EnemySounds/1"), NodePath("EnemySounds/2"), NodePath("EnemySounds/3"), NodePath("EnemySounds/4")]
+player_death_sounds = [NodePath("PlayerDeathSounds/1"), NodePath("PlayerDeathSounds/2"), NodePath("PlayerDeathSounds/3")]
+music = NodePath("Music")
+
+[node name="EnemySounds" type="Node" parent="AudioManager"]
+
+[node name="1" type="AudioStreamPlayer2D" parent="AudioManager/EnemySounds"]
+stream = ExtResource("25_re5cj")
+
+[node name="2" type="AudioStreamPlayer2D" parent="AudioManager/EnemySounds"]
+stream = ExtResource("26_ej6hb")
+
+[node name="3" type="AudioStreamPlayer2D" parent="AudioManager/EnemySounds"]
+stream = ExtResource("27_vd6bu")
+
+[node name="4" type="AudioStreamPlayer2D" parent="AudioManager/EnemySounds"]
+stream = ExtResource("28_640mj")
+
+[node name="PlayerDeathSounds" type="Node" parent="AudioManager"]
+
+[node name="1" type="AudioStreamPlayer2D" parent="AudioManager/PlayerDeathSounds"]
+stream = ExtResource("29_tt4bs")
+
+[node name="2" type="AudioStreamPlayer2D" parent="AudioManager/PlayerDeathSounds"]
+stream = ExtResource("30_ctg0g")
+
+[node name="3" type="AudioStreamPlayer2D" parent="AudioManager/PlayerDeathSounds"]
+stream = ExtResource("31_1rh07")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="AudioManager"]
+stream = ExtResource("32_y3dqc")
+autoplay = true
+
+[connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]
+[connection signal="pressed" from="Control/GameOverPanel/Button" to="GameManager" method="_on_button_pressed"]

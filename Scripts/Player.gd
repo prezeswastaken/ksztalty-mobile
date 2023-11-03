@@ -2,10 +2,9 @@ extends Node2D
 
 @export var textures: Array[Texture]
 @onready var sprite = $Sprite2D
-@onready var button = $Button
 
-@onready var previous_state_button = get_node("../PreviousStateButton")
-@onready var next_state_button = get_node("../NextStateButton")
+@export var previous_state_button: Button
+@export var next_state_button: Button
 
 var state
 
@@ -16,11 +15,6 @@ func _ready():
     previous_state_button.pressed.connect(set_previous_state)
     next_state_button.pressed.connect(set_next_state)
 
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-    pass
 
 func get_next_state ():
     if state == 2:
@@ -43,3 +37,4 @@ func set_next_state ():
 
 func set_previous_state ():
     set_state(get_previous_state())
+
